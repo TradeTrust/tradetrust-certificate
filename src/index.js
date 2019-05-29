@@ -7,7 +7,7 @@ const {
     validateSchema,
     obfuscateDocument,
     MerkleTree
-  } = require("@tradetrust/tradetrust-attestation");
+  } = require("@govtechsg/open-attestation");
   
   /* eslint-disable global-require */
   // Disabling eslint for this because it doesn't make sense

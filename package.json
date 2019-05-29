@@ -59,7 +59,7 @@
     "rollup-plugin-node-resolve": "^3.3.0"
   },
   "dependencies": {
-    "@tradetrust/tradetrust-attestation": "file:../tradetrust-attestation/tradetrust-tradetrust-attestation-1.0.0.tgz"
+    "@govtechsg/open-attestation": "^1.1.35"
   },
   "publishConfig": {
     "access": "public"
