@@ -42,6 +42,9 @@ jobs:
     steps:
       - checkout
       - run: npm install
+      - add_ssh_keys:
+          fingerprints:
+            - "b5:47:90:bc:6c:35:c1:95:a0:43:4e:9b:dd:da:ff:80"
       - run: npx semantic-release
 
 workflows:
