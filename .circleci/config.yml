@@ -40,6 +40,9 @@ jobs:
     docker:
       - image: circleci/node:lts
     steps:
+      - add_ssh_keys:
+          fingerprints:
+            - "b5:47:90:bc:6c:35:c1:95:a0:43:4e:9b:dd:da:ff:80"
       - checkout
       - run: npm install
       - run: npx semantic-release
