@@ -15,7 +15,8 @@
   "author": "Sumit Chaudhari",
   "files": [
     "dist",
-    "src"
+    "src",
+    "schema"
   ],
   "scripts": {
     "test": "jest",
@@ -70,7 +71,8 @@
     "prettier": "1.16.4",
     "rimraf": "2.6.3",
     "semantic-release": "^15.13.12",
-    "semantic-release-cli": "5.1.1"
+    "semantic-release-cli": "5.1.1",
+    "standard-changelog": "2.0.7"
   },
   "publishConfig": {
     "access": "public"
