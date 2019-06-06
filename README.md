@@ -1,4 +1,6 @@
+[![CircleCI](https://circleci.com/gh/TradeTrust/tradetrust-schema/tree/master.svg?style=svg)](https://circleci.com/gh/TradeTrust/tradetrust-schema/tree/master)
 # tradetrust-certificate
+
 
 ## API
 
