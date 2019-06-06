@@ -35,3 +35,20 @@ jobs:
 
       # run tests!
       - run: npm test
+
+  release:
+    docker:
+      - image: circleci/node:lts-jessie-browsers
+    steps:
+      - checkout
+      - run: npm install
+      - run: npx semantic-release
+
+workflows:
+  version: 2
+  test_and_release:
+    jobs:
+      - build
+      - release:
+          requires:
+            - build

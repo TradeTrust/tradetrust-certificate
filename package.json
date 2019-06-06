@@ -1,6 +1,6 @@
 {
   "name": "@govtechsg/tradetrust-schema",
-  "version": "0.0.1",
+  "version": "0.0.0-development",
   "description": "Schema for TradeTrust",
   "license": "Apache-2.0",
   "main": "dist/index.js",
@@ -28,7 +28,8 @@
     "build": "babel src -d dist",
     "preversion": "npm run lint && npm test && npm run build",
     "version": "standard-changelog && git add CHANGELOG.md",
-    "postpublish": "git push origin master --follow-tags"
+    "postpublish": "git push origin master --follow-tags",
+    "semantic-release": "semantic-release"
   },
   "husky": {
     "hooks": {
@@ -46,7 +47,8 @@
     "schema"
   ],
   "dependencies": {
-    "@govtechsg/open-attestation": "^1.1.35"
+    "@govtechsg/open-attestation": "^1.1.35",
+    "semantic-release-cli": "5.1.1"
   },
   "devDependencies": {
     "@babel/cli": "7.2.3",
