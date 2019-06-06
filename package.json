@@ -1,6 +1,6 @@
 {
   "name": "@tradetrust/tradetrust-certificate",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "schema for tradetrust",
   "main": "dist/tradetrust-certificate.js",
   "module": "dist/tradetrust-certificate.esm.js",
@@ -11,7 +11,8 @@
     "test": "npm run build && nyc --reporter=html mocha --timeout 5000 -- ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js'",
     "test-watch": "mocha ./test/helpers.js './schema/**/*.test.js' './src/**/*.test.js' './test/**/*.test.js' --watch --watch-extensions js,json --recursive",
     "lint": "eslint . --ext .js --max-warnings 0",
-    "lint:fix": "eslint . --ext .js --fix"
+    "lint:fix": "eslint . --ext .js --fix",
+    "semantic-release": "semantic-release"
   },
   "files": [
     "/dist",
@@ -19,7 +20,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TradeTrust/tradetrust-certificate.git"
+    "url": "https://github.com/TradeTrust/tradetrust-certificate.git"
   },
   "keywords": [
     "tradetrust",
@@ -56,10 +57,12 @@
     "rollup-plugin-babel": "^3.0.7",
     "rollup-plugin-commonjs": "^9.1.5",
     "rollup-plugin-json": "^3.0.0",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "rollup-plugin-node-resolve": "^3.3.0",
+    "semantic-release": "^15.13.12"
   },
   "dependencies": {
-    "@govtechsg/open-attestation": "^1.1.35"
+    "@govtechsg/open-attestation": "^1.1.35",
+    "semantic-release": "^15.13.12"
   },
   "publishConfig": {
     "access": "public"
