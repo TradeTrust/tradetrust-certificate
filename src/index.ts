@@ -22,14 +22,15 @@ const defaultSchema = schemas["1.0"];
 addSchema(Object.values(schemas));
 // End - Initialise all valid schema
 
-const issueCertificate = data => issueDocument(data, defaultSchema);
+const issueCertificate = (data: any) => issueDocument(data, defaultSchema);
 
-const issueCertificates = dataArray => issueDocuments(dataArray, defaultSchema);
+const issueCertificates = (dataArray: any) =>
+  issueDocuments(dataArray, defaultSchema);
 
-const obfuscateFields = (document, fields) =>
+const obfuscateFields = (document: any, fields: any) =>
   obfuscateDocument(document, fields);
 
-const certificateData = document => getData(document);
+const certificateData = (document: any) => getData(document);
 
 module.exports = {
   issueCertificate,
