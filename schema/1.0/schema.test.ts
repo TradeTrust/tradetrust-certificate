@@ -28,6 +28,14 @@ describe("schema/v1.0", () => {
     expect(valid).toBe(true);
   });
 
+  it("should be valid without attachments", () => {
+    const document = omit(sample, "attachments");
+    const issuedDocument = issueDocument(document, schema);
+    const valid = validateSchema(issuedDocument);
+
+    expect(valid).toBe(true);
+  });
+
   it("should be invalid if $template does not have name or type", () => {
     const documentWithoutName = omit(sample, "$template.name");
     expect(() => {
@@ -51,6 +59,23 @@ describe("schema/v1.0", () => {
     const document = omit(sample, "issuers[0].documentStore");
     expect(() => {
       issueDocument(document, schema);
+    }).toThrow("Invalid document");
+  });
+
+  it("should be invalid without attachments filename, type or data", () => {
+    const documentWithoutName = omit(sample, "attachments[0].filename");
+    expect(() => {
+      issueDocument(documentWithoutName, schema);
+    }).toThrow("Invalid document");
+
+    const documentWithoutData = omit(sample, "attachments[0].data");
+    expect(() => {
+      issueDocument(documentWithoutData, schema);
+    }).toThrow("Invalid document");
+
+    const documentWithoutType = omit(sample, "attachments[0].type");
+    expect(() => {
+      issueDocument(documentWithoutType, schema);
     }).toThrow("Invalid document");
   });
 });

@@ -14,5 +14,12 @@
   "recipient": {
     "name": "Recipient Name"
   },
-  "unknownKey": "unknownValue"
+  "unknownKey": "unknownValue",
+  "attachments": [
+    {
+      "filename": "sample.pdf",
+      "type": "application/pdf",
+      "data": "BASE64_ENCODED_FILE"
+    }
+  ]
 }

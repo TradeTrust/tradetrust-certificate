@@ -53,6 +53,28 @@
         }
       },
       "additionalProperties": true
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "description": "Name of attachment, with appropriate extensions"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of attachment"
+          },
+          "data": {
+            "type": "string",
+            "description": "Base64 encoding of attachment"
+          }
+        },
+        "required": ["filename", "type", "data"],
+        "additionalProperties": false
+      }
     }
   },
   "required": ["issuers"],
