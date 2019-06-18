@@ -50,7 +50,9 @@
     "schema"
   ],
   "dependencies": {
-    "@govtechsg/open-attestation": "^1.1.35"
+    "@govtechsg/open-attestation": "^1.1.35",
+    "@types/lodash": "4.14.134",
+    "lodash": "4.17.11"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.3.3",

@@ -1,0 +1,56 @@
+import { omit } from "lodash";
+
+import { issueDocument, validateSchema } from "@govtechsg/open-attestation";
+
+const sample = require("./sample.json");
+const schema = require("./schema.json");
+
+describe("schema/v1.0", () => {
+  it("should be valid with sample document", () => {
+    const issuedDocument = issueDocument(sample, schema);
+    const valid = validateSchema(issuedDocument);
+
+    expect(valid).toBe(true);
+  });
+
+  it("should be valid with additonal key:value", () => {
+    const issuedDocument = issueDocument({ ...sample, foo: "bar" }, schema);
+    const valid = validateSchema(issuedDocument);
+
+    expect(valid).toBe(true);
+  });
+
+  it("should be valid without $template (will use default view)", () => {
+    const document = omit(sample, "$template");
+    const issuedDocument = issueDocument(document, schema);
+    const valid = validateSchema(issuedDocument);
+
+    expect(valid).toBe(true);
+  });
+
+  it("should be invalid if $template does not have name or type", () => {
+    const documentWithoutName = omit(sample, "$template.name");
+    expect(() => {
+      issueDocument(documentWithoutName, schema);
+    }).toThrow("Invalid document");
+
+    const documentWithoutType = omit(sample, "$template.type");
+    expect(() => {
+      issueDocument(documentWithoutType, schema);
+    }).toThrow("Invalid document");
+  });
+
+  it("should be invalid without issuer", () => {
+    const document = omit(sample, "issuers");
+    expect(() => {
+      issueDocument(document, schema);
+    }).toThrow("Invalid document");
+  });
+
+  it("should be invalid without documentStore in issuer", () => {
+    const document = omit(sample, "issuers[0].documentStore");
+    expect(() => {
+      issueDocument(document, schema);
+    }).toThrow("Invalid document");
+  });
+});
