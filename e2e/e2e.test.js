@@ -20,7 +20,7 @@ it("can batch one document", () => {
 });
 
 it("can batch multiple documents", () => {
-  const documents: any[] = issueDocuments([sample, sample]);
+  const documents = issueDocuments([sample, sample]);
   documents.forEach(document => {
     expect(document).toHaveProperty("signature.merkleRoot");
     expect(document).toHaveProperty("signature.targetHash");

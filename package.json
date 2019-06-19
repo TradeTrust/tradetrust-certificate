@@ -20,7 +20,8 @@
   ],
   "scripts": {
     "type-check": "tsc --noEmit",
-    "test": "jest",
+    "e2e": "jest",
+    "test": "jest --testPathIgnorePatterns e2e",
     "coverage": "npm test -- --coverage",
     "postcoverage": "opn coverage/lcov-report/index.html",
     "lint": "eslint . --ext js,ts,tsx",

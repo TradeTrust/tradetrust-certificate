@@ -15,8 +15,8 @@ jobs:
           name: build
           command: npm run build
       - run:
-          name: build
-          command: npm run test
+          name: e2e
+          command: npm run e2e
       - run:
           name: release
           command: npm run semantic-release
