@@ -18,11 +18,11 @@ export const defaultSchema = schemas[defaultSchemaVersion];
 addSchema(Object.values(schemas));
 // End - Initialise all valid schema
 
-export const issueDocument = (data: any) =>
-  issueDocumentWithSchema(data, defaultSchema);
+export const issueDocument = (document: any) =>
+  issueDocumentWithSchema(document, defaultSchema);
 
-export const issueDocuments = (dataArray: any) =>
-  issueDocumentsWithSchema(dataArray, defaultSchema);
+export const issueDocuments = (documents: any[]) =>
+  issueDocumentsWithSchema(documents, defaultSchema);
 
 // Re-export functions from OA directly
 export {

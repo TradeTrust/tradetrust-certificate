@@ -1,7 +1,4 @@
 declare module "@govtechsg/open-attestation" {
-  export function normalize(p: string): string;
-  export function join(...paths: any[]): string;
-
   export function getData(document: any): any;
   export function issueDocument(document: any, schema: any): any;
   export function issueDocuments(documents: any[], schema: any): any[];

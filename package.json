@@ -29,11 +29,11 @@
     "postdocs": "git add README.md",
     "clean": "rimraf dist",
     "prebuild": "npm run docs && npm run clean",
-    "build": "tsc --emitDeclarationOnly && babel src -d dist --ignore src/**/*.spec.js,src/**/*.test.js -x .js,.ts,.tsx",
+    "build": "tsc --emitDeclarationOnly && babel src -d dist --ignore src/**/*.spec.js,src/**/*.test.js,src/**/*.spec.ts,src/**/*.test.ts -x .js,.ts,.tsx",
     "preversion": "npm run lint && npm test && npm run build",
     "semantic-release": "semantic-release"
   },
-  "types": "dist/ts/src",
+  "types": "dist/ts",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"

@@ -1,11 +1,11 @@
-import {
+const {
   defaultSchemaVersion,
   issueDocument,
   issueDocuments,
   getData,
   validateSchema,
   obfuscateDocument
-} from "./index";
+} = require("../dist");
 
 // eslint-disable-next-line import/no-dynamic-require
 const sample = require(`../schema/${defaultSchemaVersion}/sample.json`);
@@ -20,7 +20,7 @@ it("can batch one document", () => {
 });
 
 it("can batch multiple documents", () => {
-  const documents = issueDocuments([sample, sample]);
+  const documents: any[] = issueDocuments([sample, sample]);
   documents.forEach(document => {
     expect(document).toHaveProperty("signature.merkleRoot");
     expect(document).toHaveProperty("signature.targetHash");

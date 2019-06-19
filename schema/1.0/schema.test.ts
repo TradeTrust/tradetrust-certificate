@@ -48,10 +48,59 @@ describe("schema/v1.0", () => {
     }).toThrow("Invalid document");
   });
 
-  it("should be invalid without issuer", () => {
-    const document = omit(sample, "issuers");
+  it("should be invalid with invalid template type", () => {
+    const document = {
+      ...sample,
+      $template: {
+        name: "CUSTOM_TEMPLATE",
+        type: "INVALID_RENDERER"
+      }
+    };
     expect(() => {
       issueDocument(document, schema);
+    }).toThrow("Invalid document");
+  });
+
+  it("should be invalid with invalid file type", () => {
+    const document = {
+      ...sample,
+      attachments: [
+        {
+          filename: "sample.aac",
+          type: "audio/aac",
+          data: "BASE64_ENCODED_FILE"
+        }
+      ]
+    };
+    expect(() => {
+      issueDocument(document, schema);
+    }).toThrow("Invalid document");
+  });
+
+  it("should be invalid with invalid documentStore address", () => {
+    const document = {
+      ...sample,
+      issuers: [
+        {
+          name: "DEMO STORE",
+          documentStore: "Invalid Address"
+        }
+      ]
+    };
+    expect(() => {
+      issueDocument(document, schema);
+    }).toThrow("Invalid document");
+  });
+
+  it("should be invalid without issuer", () => {
+    const documentWithoutKey = omit(sample, "issuers");
+    expect(() => {
+      issueDocument(documentWithoutKey, schema);
+    }).toThrow("Invalid document");
+
+    const documentWithZeroIssuer = { ...sample, issuers: [] };
+    expect(() => {
+      issueDocument(documentWithZeroIssuer, schema);
     }).toThrow("Invalid document");
   });
 
