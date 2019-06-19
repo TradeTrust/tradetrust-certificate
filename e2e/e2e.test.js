@@ -5,6 +5,7 @@ const {
   getData,
   validateSchema,
   obfuscateDocument
+  // eslint-disable-next-line import/no-unresolved
 } = require("../dist");
 
 // eslint-disable-next-line import/no-dynamic-require
