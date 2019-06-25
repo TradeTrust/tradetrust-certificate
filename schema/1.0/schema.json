@@ -1,92 +1,85 @@
 {
-    "$id": "tradetrust/v1.0",
-    "$schema": "http://json-schema.org/draft-07/schema#",
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "string"
-      },
-      "$template": {
-        "type": "object",
-        "properties": {
-            "name": {
-              "type": "string"
-            },
-            "type": {
-              "type": "string"
-            },
-            "url": {
-              "type": "string"
-            }
-          },
-          "required": [ "name", "type", "url" ]
-      },
-      "description": {
-        "type": "string"
-      },
-      "issuedOn": {
-        "description": "The date that this certificate was issued by the issuer(s)",
-        "type": "string",
-        "format": "date-time"
-      },
-      "certificateType": {
-        "type": "string"
-      },
-      "issuers": {
-        "type": "array",
-        "items": {
-          "type": "object",
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "address": {
-              "type": "string"
-            },
-            "country": {
-              "type": "string"
-            },
-            "email": {
-              "type": "string",
-              "format": "email"
-            },
-            "phone": {
-              "type": "string"
-            },
-            "certificateStore": {
-              "type": "string"
-            }
-          },
-          "required": ["name", "certificateStore"],
-          "additionalProperties": true
+  "$id": "tradetrust/v1.0",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Internal reference, usually serial number, of this document"
+    },
+    "$template": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Template name to be use by template renderer to determine the template to use"
         },
-        "minItems": 1
+        "type": {
+          "type": "string",
+          "description": "Type of renderer template",
+          "enum": ["EMBEDDED_RENDERER"]
+        },
+        "url": {
+          "type": "string",
+          "description": "URL of a decentralised renderer to render this document"
+        }
       },
-      "recipient": {
+      "required": ["name", "type"]
+    },
+    "issuers": {
+      "type": "array",
+      "items": {
         "type": "object",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Issuer's name"
           },
-          "address": {
-            "type": "string"
-          },
-          "country": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "phone": {
-            "type": "string"
+          "documentStore": {
+            "type": "string",
+            "pattern": "^0x[a-fA-F0-9]{40}$",
+            "description": "Smart contract address of document store"
           }
         },
+        "required": ["name", "documentStore"],
         "additionalProperties": true
       },
-      "additionalData": {
-        "type": "object"
-      }
+      "minItems": 1
     },
-    "required": ["issuers"],
-    "additionalProperties": true
-  }
+    "recipient": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Recipient's name"
+        }
+      },
+      "additionalProperties": true
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "filename": {
+            "type": "string",
+            "description": "Name of attachment, with appropriate extensions"
+          },
+          "type": {
+            "type": "string",
+            "description": "Type of attachment",
+            "enum": ["application/pdf", "image/png", "image/jpeg"]
+          },
+          "data": {
+            "type": "string",
+            "description": "Base64 encoding of attachment"
+          }
+        },
+        "required": ["filename", "type", "data"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["issuers"],
+  "additionalProperties": true
+}

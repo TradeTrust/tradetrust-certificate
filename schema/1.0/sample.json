@@ -1,22 +1,25 @@
 {
-    "id": "ABCXXXXX00",
-    "$template": {
-      "name": "CUSTOM_TEMPLATE",
-      "type": "IFRAME_RENDERING",
-      "url": "http://localhost:3000/rederer"
-    },
-    "description": "A Certificate",
-    "issuedOn": "2018-08-30T00:00:00+08:00",
-    "certificateType": "Certificate of Origin",
-    "issuers": [{
-        "name": "DEMO STORE",
-          "address": "Changi Singapore -123456",
-        "country": "Singapore",
-        "certificateStore": "0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d"
-    }],
-    "recipient": {
-        "name": "Reciepient Name",
-        "address": "Sydney Australia",
-        "country": "Australia"
+  "id": "SERIAL_NUMBER_123",
+  "$template": {
+    "name": "CUSTOM_TEMPLATE",
+    "type": "EMBEDDED_RENDERER",
+    "url": "https://localhost:3000/renderer"
+  },
+  "issuers": [
+    {
+      "name": "DEMO STORE",
+      "documentStore": "0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d"
     }
+  ],
+  "recipient": {
+    "name": "Recipient Name"
+  },
+  "unknownKey": "unknownValue",
+  "attachments": [
+    {
+      "filename": "sample.pdf",
+      "type": "application/pdf",
+      "data": "BASE64_ENCODED_FILE"
+    }
+  ]
 }
