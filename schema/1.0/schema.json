@@ -39,6 +39,11 @@
             "type": "string",
             "pattern": "^0x[a-fA-F0-9]{40}$",
             "description": "Smart contract address of document store"
+          },
+          "documentStoreNetwork": {
+            "type": "string",
+            "enum": ["ETHEREUM"],
+            "description": "Network the document store is deployed on"
           }
         },
         "required": ["name", "documentStore"],

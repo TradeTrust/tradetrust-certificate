@@ -48,6 +48,22 @@ describe("schema/v1.0", () => {
     }).toThrow("Invalid document");
   });
 
+  it("should be invalid with invalid network", () => {
+    const document = {
+      ...sample,
+      issuers: [
+        {
+          name: "DEMO STORE",
+          documentStore: "0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d",
+          documentStoreNetwork: "INVALID_NETWORK"
+        }
+      ]
+    };
+    expect(() => {
+      issueDocument(document, schema);
+    }).toThrow("Invalid document");
+  });
+
   it("should be invalid with invalid template type", () => {
     const document = {
       ...sample,
