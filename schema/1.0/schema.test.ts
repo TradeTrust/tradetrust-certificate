@@ -29,7 +29,7 @@ describe("schema/v1.0", () => {
     }).toThrow("Invalid document");
   });
 
-  it("should be invalid if identity type is other than DNS and REGISTRY", () => {
+  it("should be valid if identity type is DNS or REGISTRY", () => {
     const document = merge(sample, {
       issuers: [
         {
