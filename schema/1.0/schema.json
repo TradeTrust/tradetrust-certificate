@@ -40,14 +40,13 @@
             "pattern": "^0x[a-fA-F0-9]{40}$",
             "description": "Smart contract address of document store"
           },
-          "identity": {
+          "identityProof": {
             "type": "object",
             "properties": {
               "type": {
                 "type": "string",
                 "enum": [
-                  "DNS",
-                  "REGISTRY"
+                  "DNS-TXT"
                 ]
               },
               "source": {

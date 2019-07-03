@@ -13,11 +13,11 @@ describe("schema/v1.0", () => {
     expect(valid).toBe(true);
   });
 
-  it("should be invalid if identity type is other than DNS and REGISTRY", () => {
+  it("should be invalid if identity type is other than DNS-TXT", () => {
     const document = merge(sample, {
       issuers: [
         {
-          identity: {
+          identityProof: {
             type: "ABC",
             source: "http:abc.com"
           }
@@ -29,12 +29,12 @@ describe("schema/v1.0", () => {
     }).toThrow("Invalid document");
   });
 
-  it("should be valid if identity type is DNS or REGISTRY", () => {
+  it("should be valid if identity type is DNS-TXT", () => {
     const document = merge(sample, {
       issuers: [
         {
-          identity: {
-            type: "DNS",
+          identityProof: {
+            type: "DNS-TXT",
             source: "http:abc.com"
           }
         }
