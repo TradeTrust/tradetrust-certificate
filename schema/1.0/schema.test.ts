@@ -1,4 +1,4 @@
-import { omit } from "lodash";
+import { omit, merge } from "lodash";
 
 import { issueDocument, validateSchema } from "@govtechsg/open-attestation";
 
@@ -11,6 +11,37 @@ describe("schema/v1.0", () => {
     const valid = validateSchema(issuedDocument);
 
     expect(valid).toBe(true);
+  });
+
+  it("should be invalid if identity type is other than DNS-TXT", () => {
+    const document = merge(sample, {
+      issuers: [
+        {
+          identityProof: {
+            type: "ABC",
+            location: "http:abc.com"
+          }
+        }
+      ]
+    });
+    expect(() => {
+      issueDocument(document, schema);
+    }).toThrow("Invalid document");
+  });
+
+  it("should be valid if identity type is DNS-TXT", () => {
+    const document = merge(sample, {
+      issuers: [
+        {
+          identityProof: {
+            type: "DNS-TXT",
+            location: "http:abc.com"
+          }
+        }
+      ]
+    });
+    const issuedDocument = issueDocument(document, schema);
+    expect(validateSchema(issuedDocument)).toBe(true);
   });
 
   it("should be valid with additonal key:value", () => {

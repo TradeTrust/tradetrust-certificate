@@ -39,6 +39,22 @@
             "type": "string",
             "pattern": "^0x[a-fA-F0-9]{40}$",
             "description": "Smart contract address of document store"
+          },
+          "identityProof": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "DNS-TXT"
+                ]
+              },
+              "location": {
+                "type": "string",
+                "description": "Url of the website referencing to document store"
+              }
+            },
+            "required": ["type", "location"]
           }
         },
         "required": ["name", "documentStore"],
