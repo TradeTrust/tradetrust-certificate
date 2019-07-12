@@ -49,12 +49,12 @@
                   "DNS-TXT"
                 ]
               },
-              "source": {
+              "location": {
                 "type": "string",
                 "description": "Url of the website referencing to document store"
               }
             },
-            "required": ["type", "source"]
+            "required": ["type", "location"]
           }
         },
         "required": ["name", "documentStore"],

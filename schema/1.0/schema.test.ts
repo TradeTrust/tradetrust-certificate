@@ -19,7 +19,7 @@ describe("schema/v1.0", () => {
         {
           identityProof: {
             type: "ABC",
-            source: "http:abc.com"
+            location: "http:abc.com"
           }
         }
       ]
@@ -35,7 +35,7 @@ describe("schema/v1.0", () => {
         {
           identityProof: {
             type: "DNS-TXT",
-            source: "http:abc.com"
+            location: "http:abc.com"
           }
         }
       ]
