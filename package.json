@@ -52,7 +52,7 @@
   ],
   "dependencies": {
     "@govtechsg/open-attestation": "^1.1.35",
-    "@types/lodash": "4.14.136",
+    "@types/lodash": "4.14.137",
     "lodash": "4.17.15"
   },
   "devDependencies": {
