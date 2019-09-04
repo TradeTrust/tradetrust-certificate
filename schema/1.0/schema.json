@@ -26,6 +26,7 @@
       },
       "required": ["name", "type"]
     },
+    "documentUrl": {"type": "string", "description": "URL of the stored tt document"},
     "issuers": {
       "type": "array",
       "items": {
