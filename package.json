@@ -62,7 +62,7 @@
     "@typescript-eslint/parser": "1.13.0",
     "typescript": "3.6.3",
     "@babel/cli": "7.6.0",
-    "@babel/core": "7.5.5",
+    "@babel/core": "7.6.0",
     "@babel/plugin-proposal-class-properties": "7.5.5",
     "@babel/preset-env": "7.5.5",
     "babel-eslint": "10.0.2",
