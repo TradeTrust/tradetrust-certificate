@@ -64,7 +64,7 @@
     "@babel/cli": "7.6.0",
     "@babel/core": "7.5.5",
     "@babel/plugin-proposal-class-properties": "7.5.5",
-    "@babel/preset-env": "7.5.5",
+    "@babel/preset-env": "7.6.0",
     "babel-eslint": "10.0.2",
     "babel-jest": "24.9.0",
     "documentation": "12.1.2",
