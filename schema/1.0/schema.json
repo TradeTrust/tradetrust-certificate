@@ -26,7 +26,10 @@
       },
       "required": ["name", "type"]
     },
-    "documentUrl": {"type": "string", "description": "URL of the stored tt document"},
+    "documentUrl": {
+      "type": "string",
+      "description": "URL of the stored tt document"
+    },
     "issuers": {
       "type": "array",
       "items": {
@@ -46,9 +49,7 @@
             "properties": {
               "type": {
                 "type": "string",
-                "enum": [
-                  "DNS-TXT"
-                ]
+                "enum": ["DNS-TXT"]
               },
               "location": {
                 "type": "string",
@@ -56,9 +57,23 @@
               }
             },
             "required": ["type", "location"]
+          },
+          "tokenRegistry": {
+            "type": "string",
+            "pattern": "^0x[a-fA-F0-9]{40}$",
+            "description": "Smart contract address of token registry"
           }
         },
-        "required": ["name", "documentStore"],
+        "anyOf": [
+          {
+            "required": ["name", "documentStore"],
+            "not": { "required": ["tokenRegistry"] }
+          },
+          {
+            "required": ["name", "tokenRegistry"],
+            "not": { "required": ["documentStore"] }
+          }
+        ],
         "additionalProperties": true
       },
       "minItems": 1
