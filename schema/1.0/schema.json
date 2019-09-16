@@ -66,11 +66,11 @@
         },
         "anyOf": [
           {
-            "required": ["name", "documentStore"],
+            "required": ["name", "documentStore", "identityProof"],
             "not": { "required": ["tokenRegistry"] }
           },
           {
-            "required": ["name", "tokenRegistry"],
+            "required": ["name", "tokenRegistry", "identityProof"],
             "not": { "required": ["documentStore"] }
           }
         ],

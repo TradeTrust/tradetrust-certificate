@@ -1,4 +1,4 @@
-import { omit, merge } from "lodash";
+import { omit, merge, cloneDeep } from "lodash";
 
 import { issueDocument, validateSchema } from "@govtechsg/open-attestation";
 
@@ -20,7 +20,7 @@ describe("schema/v1.0", () => {
         {
           identityProof: {
             type: "ABC",
-            location: "http:abc.com"
+            location: "abc.com"
           }
         }
       ]
@@ -36,13 +36,21 @@ describe("schema/v1.0", () => {
         {
           identityProof: {
             type: "DNS-TXT",
-            location: "http:abc.com"
+            location: "abc.com"
           }
         }
       ]
     });
     const issuedDocument = issueDocument(document, schema);
     expect(validateSchema(issuedDocument)).toBe(true);
+  });
+
+  it("should not be valid without identityProof", () => {
+    const document = cloneDeep(sampleDoc);
+    delete document.issuers[0].identityProof;
+    expect(() => {
+      issueDocument(document, schema);
+    }).toThrow("Invalid document");
   });
 
   it("should be valid with sample token", () => {
@@ -63,7 +71,11 @@ describe("schema/v1.0", () => {
               documentStore: "0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d",
               tokenRegistry: "0x9178F546D3FF57D7A6352bD61B80cCCD46199C2d"
             }
-          ]
+          ],
+          identityProof: {
+            type: "DNS-TXT",
+            location: "abc.com"
+          }
         },
         schema
       );
@@ -140,7 +152,11 @@ describe("schema/v1.0", () => {
       issuers: [
         {
           name: "DEMO STORE",
-          documentStore: "Invalid Address"
+          documentStore: "Invalid Address",
+          identityProof: {
+            type: "DNS-TXT",
+            location: "abc.com"
+          }
         }
       ]
     };
