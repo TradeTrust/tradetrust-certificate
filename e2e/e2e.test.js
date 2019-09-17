@@ -9,7 +9,7 @@ const {
 } = require("../dist");
 
 // eslint-disable-next-line import/no-dynamic-require
-const sample = require(`../schema/${defaultSchemaVersion}/sample.json`);
+const sample = require(`../schema/${defaultSchemaVersion}/sample-token.json`);
 
 it("can batch one document", () => {
   const document = issueDocument(sample);
