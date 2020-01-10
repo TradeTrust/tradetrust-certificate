@@ -80,7 +80,7 @@
     "prettier": "1.19.1",
     "rimraf": "3.0.0",
     "standard-changelog": "2.0.21",
-    "semantic-release": "^15.13.12"
+    "semantic-release": "^16.0.1"
   },
   "publishConfig": {
     "access": "public"
