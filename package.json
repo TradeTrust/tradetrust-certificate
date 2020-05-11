@@ -79,7 +79,7 @@
     "opn-cli": "5.0.0",
     "prettier": "1.19.1",
     "rimraf": "3.0.2",
-    "standard-changelog": "2.0.21",
+    "standard-changelog": "2.0.24",
     "semantic-release": "^17.0.1"
   },
   "publishConfig": {
