@@ -51,7 +51,7 @@
     "schema"
   ],
   "dependencies": {
-    "@govtechsg/open-attestation": "^1.1.35",
+    "@govtechsg/open-attestation": "^3.7.0",
     "@types/lodash": "4.14.154",
     "lodash": "4.17.15"
   },
