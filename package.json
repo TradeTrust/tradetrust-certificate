@@ -53,7 +53,7 @@
   "dependencies": {
     "@govtechsg/open-attestation": "^1.1.35",
     "@types/lodash": "4.14.157",
-    "lodash": "4.17.15"
+    "lodash": "4.17.18"
   },
   "devDependencies": {
     "@babel/preset-typescript": "7.10.4",
